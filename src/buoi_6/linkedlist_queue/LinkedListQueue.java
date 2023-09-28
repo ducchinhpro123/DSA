@@ -1,5 +1,7 @@
 package buoi_6.linkedlist_queue;
 
+
+/* Queue Generic Type */
 public class LinkedListQueue<E> {
     private ListNode<E> head, rear;
     private int queSize;
@@ -10,7 +12,7 @@ public class LinkedListQueue<E> {
         rear = null;
     }
 
-    public void push(E data) {
+    public void enqueue(E data) {
         // Add data after the end node
         ListNode<E> node = new ListNode<>((E) data);
         // If the queue is empty, the head and tail nodes are pointing to the node
@@ -25,11 +27,15 @@ public class LinkedListQueue<E> {
     }
 
     /* remove and return the first element */
-    public E pop() {
+    public E dequeue() {
         E data = peek();
         head = head.next;
         queSize--;
         return data;
+    }
+
+    public E first() {
+        return head.data;
     }
 
     /* get the first element */
@@ -73,12 +79,13 @@ public class LinkedListQueue<E> {
     public static void main(String[] args) {
 
         LinkedListQueue<Integer> queue = new LinkedListQueue<>();
-        queue.push(1);
-        queue.push(2);
-        queue.push(3);
-        queue.push(4);
-        queue.pop();
-        queue.pop();
+        queue.enqueue(1);
+        queue.enqueue(3);
+        queue.enqueue(4);
+        queue.enqueue(5);
+        queue.enqueue(7);
+        queue.enqueue(9);
+        queue.dequeue();
 
         queue.print();
 
